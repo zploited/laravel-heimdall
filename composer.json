@@ -1,0 +1,25 @@
+{
+  "name": "zploited/laravel-heimdall",
+  "description": "OAuth 2.0 server for Laravel.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dennis Nielsen",
+      "email": "dni@zploited.dk"
+    }
+  ],
+  "require-dev": {
+    "orchestra/testbench": "^8.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Zploited\\Heimdall\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Zploited\\Heimdall\\Tests\\": "tests/"
+    }
+  }
+}
