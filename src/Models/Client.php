@@ -22,6 +22,7 @@ use Zploited\Heimdall\Framework\OauthAuthenticatable;
  */
 class Client extends OauthAuthenticatable
 {
+    public $incrementing = false;
     protected $fillable = ['name', 'redirect_uri', 'allow_skip_consent', 'secret'];
     protected $hidden = ['secret'];
     protected $casts = [

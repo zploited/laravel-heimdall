@@ -1,6 +1,7 @@
 <?php
 namespace Zploited\Heimdall\Tests\Feature;
 
+use Database\Factories\ClientFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Zploited\Heimdall\Models\Client;
 use Zploited\Heimdall\Tests\TestCase;
@@ -33,5 +34,15 @@ class ClientCommandsTest extends TestCase
 
         $this->assertDatabaseCount(Client::class, 1);
         $this->assertNotNull(Client::first()->secret);
+    }
+
+    public function test_console_can_delete_client(): void
+    {
+        $client = ClientFactory::new()->create();
+
+        $this->artisan('client:delete ' . $client->id)
+            ->assertOk();
+
+        $this->assertDatabaseCount(Client::class, 0);
     }
 }
