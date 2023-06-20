@@ -25,4 +25,13 @@ class ClientCommandsTest extends TestCase
         $this->assertDatabaseCount(Client::class, 1);
         $this->assertEquals('https://mydomain.tld', Client::first()->redirect_uri->first());
     }
+
+    public function test_console_can_add_secret_while_creating_client(): void
+    {
+        $this->artisan('client:create test-client --with-secret')
+            ->assertOk();
+
+        $this->assertDatabaseCount(Client::class, 1);
+        $this->assertNotNull(Client::first()->secret);
+    }
 }
