@@ -60,4 +60,13 @@ class ClientCommandsTest extends TestCase
             ->expectsTable(['id', 'name', 'allow_skip_consent', 'created_at', 'updated_at'], Client::select(['id', 'name', 'allow_skip_consent', 'created_at', 'updated_at'])->get())
             ->assertOk();
     }
+
+    public function test_console_can_show_client_secret(): void
+    {
+        $client = ClientFactory::new()->create();
+
+        $this->artisan('client:secret '. $client->id)
+            ->expectsOutput('Secret: '. $client->secret)
+            ->assertOk();
+    }
 }
