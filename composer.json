@@ -23,7 +23,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Zploited\\Heimdall\\Tests\\": "tests/"
+      "Zploited\\Heimdall\\Tests\\": "tests/",
+      "Database\\Factories\\": "database/factories/"
     }
   }
 }
