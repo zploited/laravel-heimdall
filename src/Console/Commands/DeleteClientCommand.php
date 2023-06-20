@@ -13,9 +13,16 @@ class DeleteClientCommand extends Command
     public function handle(): int
     {
         $client = Client::find($this->argument('id'));
-        $client->delete();
-        $this->info('Client is deleted.');
 
-        return 0;
+        if($client) {
+            $client->delete();
+            $this->info('The client have been deleted.');
+
+            return 0;
+        } else {
+            $this->alert('There is no client with the provided id.');
+
+            return 1;
+        }
     }
 }

@@ -45,4 +45,10 @@ class ClientCommandsTest extends TestCase
 
         $this->assertDatabaseCount(Client::class, 0);
     }
+
+    public function test_console_fails_while_delete_client_with_wrong_id(): void
+    {
+        $this->artisan('client:delete 0')
+            ->assertFailed();
+    }
 }
