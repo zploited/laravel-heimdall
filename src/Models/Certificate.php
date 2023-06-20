@@ -20,6 +20,13 @@ use phpseclib\Crypt\RSA as LegacyRSA;
 class Certificate extends Model
 {
     public $timestamps = false;
+    protected $fillable = [];
+    protected $hidden = ['private'];
+    protected $casts = [
+        'created_at' => 'datetime',
+        'revoked_at' => 'datetime',
+        'private' => 'encrypted'
+    ];
 
     protected static function booted()
     {
