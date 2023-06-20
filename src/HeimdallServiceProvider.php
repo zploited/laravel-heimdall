@@ -4,6 +4,7 @@ namespace Zploited\Heimdall;
 
 use Illuminate\Support\ServiceProvider;
 use Zploited\Heimdall\Console\Commands\CreateCertificateCommand;
+use Zploited\Heimdall\Console\Commands\CreateClientCommand;
 use Zploited\Heimdall\Console\Commands\ListCertificateCommand;
 use Zploited\Heimdall\Console\Commands\RevokeCertificateCommand;
 
@@ -31,7 +32,9 @@ class HeimdallServiceProvider extends ServiceProvider
             $this->commands([
                 CreateCertificateCommand::class,
                 ListCertificateCommand::class,
-                RevokeCertificateCommand::class
+                RevokeCertificateCommand::class,
+
+                CreateClientCommand::class
             ]);
         }
     }
