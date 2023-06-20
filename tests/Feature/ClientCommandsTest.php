@@ -51,4 +51,13 @@ class ClientCommandsTest extends TestCase
         $this->artisan('client:delete 0')
             ->assertFailed();
     }
+
+    public function test_console_can_list_clients(): void
+    {
+        ClientFactory::new()->count(2)->create();
+
+        $this->artisan('client:list')
+            ->expectsTable(['id', 'name', 'allow_skip_consent', 'created_at', 'updated_at'], Client::select(['id', 'name', 'allow_skip_consent', 'created_at', 'updated_at'])->get())
+            ->assertOk();
+    }
 }

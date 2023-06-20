@@ -7,6 +7,7 @@ use Zploited\Heimdall\Console\Commands\CreateCertificateCommand;
 use Zploited\Heimdall\Console\Commands\CreateClientCommand;
 use Zploited\Heimdall\Console\Commands\DeleteClientCommand;
 use Zploited\Heimdall\Console\Commands\ListCertificateCommand;
+use Zploited\Heimdall\Console\Commands\ListClientCommand;
 use Zploited\Heimdall\Console\Commands\RevokeCertificateCommand;
 
 class HeimdallServiceProvider extends ServiceProvider
@@ -36,7 +37,8 @@ class HeimdallServiceProvider extends ServiceProvider
                 RevokeCertificateCommand::class,
 
                 CreateClientCommand::class,
-                DeleteClientCommand::class
+                DeleteClientCommand::class,
+                ListClientCommand::class
             ]);
         }
     }
