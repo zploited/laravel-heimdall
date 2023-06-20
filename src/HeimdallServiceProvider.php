@@ -5,6 +5,7 @@ namespace Zploited\Heimdall;
 use Illuminate\Support\ServiceProvider;
 use Zploited\Heimdall\Console\Commands\CreateCertificateCommand;
 use Zploited\Heimdall\Console\Commands\ListCertificateCommand;
+use Zploited\Heimdall\Console\Commands\RevokeCertificateCommand;
 
 class HeimdallServiceProvider extends ServiceProvider
 {
@@ -29,7 +30,8 @@ class HeimdallServiceProvider extends ServiceProvider
         if($this->app->runningInConsole()) {
             $this->commands([
                 CreateCertificateCommand::class,
-                ListCertificateCommand::class
+                ListCertificateCommand::class,
+                RevokeCertificateCommand::class
             ]);
         }
     }

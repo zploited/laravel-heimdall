@@ -27,4 +27,22 @@ class CertificateCommandsTest extends TestCase
             ->expectsTable(['id','public','created_at','revoked_at'], Certificate::all())
             ->assertOk();
     }
+
+    public function test_console_can_revoke_certificate(): void
+    {
+        $certificate = CertificateFactory::new()->create();
+
+        $this->artisan('certificate:revoke '. $certificate->id)
+            ->expectsOutput('The certificate have been revoked, and can no longer be used.')
+            ->assertOk();
+
+        $this->assertNotNull(Certificate::first()->revoked_at);
+    }
+
+    public function test_console_fails_revokation_on_wrong_id(): void
+    {
+        $this->artisan('certificate:revoke 0')
+            ->expectsOutput('There is no certificate with the provided id. Nothing has been done.')
+            ->assertFailed();
+    }
 }
